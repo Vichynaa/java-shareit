@@ -27,9 +27,13 @@ public class UserService implements UserInterface {
     }
 
     @Override
-    public User findUserById(Long userId) {return inMemoryUserStorage.findUserById(userId);}
+    public User findUserById(Long userId) {
+        return inMemoryUserStorage.findUserById(userId);
+    }
 
     @Override
-    public String deleteUserById(Long userId) {return inMemoryUserStorage.deleteUserById(userId);}
+    public String deleteUserById(Long userId) {
+        return inMemoryUserStorage.deleteUserById(userId);
+    }
 
 }

@@ -8,8 +8,8 @@ import ru.practicum.shareit.item.model.Item;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class ItemMapper {
     public static Item mapToItem(ItemDto itemDto) {
-        return Item.builder().name(itemDto.getName()).
-                description(itemDto.getDescription()).
-                available(itemDto.getAvailable()).build();
+        return Item.builder().name(itemDto.getName())
+                .description(itemDto.getDescription())
+                .available(itemDto.getAvailable()).build();
     }
 }
