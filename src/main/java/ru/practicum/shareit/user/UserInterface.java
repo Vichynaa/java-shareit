@@ -6,8 +6,12 @@ import java.util.List;
 
 public interface UserInterface {
     public User create(UserDto userDto);
+
     public User update(UserDto userDto, Long userId);
+
     public List<User> findAll();
+
     public User findUserById(Long userId);
+
     public String deleteUserById(Long userId);
 }
