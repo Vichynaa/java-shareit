@@ -9,7 +9,7 @@ import ru.practicum.shareit.user.User;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name="comments")
+@Table(name = "comments")
 @Data
 @NoArgsConstructor
 public class Comment {
@@ -19,10 +19,10 @@ public class Comment {
     @Column(name = "text", nullable = false)
     private String text;
     @ManyToOne
-    @JoinColumn(name="writer_id")
+    @JoinColumn(name = "writer_id")
     private User author;
     @ManyToOne
-    @JoinColumn(name="item_id")
+    @JoinColumn(name = "item_id")
     private Item item;
     @Column(name = "created", updatable = false)
     private LocalDateTime created = LocalDateTime.now();

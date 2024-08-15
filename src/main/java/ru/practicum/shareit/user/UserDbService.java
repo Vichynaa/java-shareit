@@ -43,8 +43,7 @@ public class UserDbService implements UserInterface {
         if (!userRepository.existsById(userId)) {
             log.error(String.format("Пользователь с id - %d, не найден", userId));
             throw new NotFoundException(String.format("Пользователь с id - %d, не найден", userId));
-        }
-        else {
+        } else {
              user = userRepository.findById(userId).get();
         }
         if (userRequest.getEmail() != null) {
@@ -63,8 +62,7 @@ public class UserDbService implements UserInterface {
         }
         try {
             return userRepository.save(user);
-        }
-        catch (DataIntegrityViolationException e) {
+        } catch (DataIntegrityViolationException e) {
             log.error(String.format("Почта %s уже существует, укажите другую", user.getEmail()));
             throw new ConflictException(String.format("Почта %s уже существует, укажите другую", user.getEmail()));
         }

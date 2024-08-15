@@ -55,8 +55,7 @@ public class ItemDbService implements ItemInterface {
         if (!itemRepository.existsById(itemId)) {
             log.error("Error объекта с id - {}, не существует", itemId);
             throw new NotFoundException(String.format("Error объекта с id - " + itemId + ", не существует"));
-        }
-        else {
+        } else {
             itemForUpdate = itemRepository.findById(itemId).get();
         }
         if (!userRepository.existsById(userId)) {

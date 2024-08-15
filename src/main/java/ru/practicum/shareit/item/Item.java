@@ -15,7 +15,7 @@ import java.util.List;
  */
 
 @Entity
-@Table(name="items")
+@Table(name = "items")
 @Data
 @NoArgsConstructor
 public class Item {
@@ -29,7 +29,7 @@ public class Item {
     @Column(name = "available", nullable = false)
     private Boolean available;
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="owner_id")
+    @JoinColumn(name = "owner_id")
     @JsonIgnore
     private User owner;
     @OneToMany(mappedBy = "item")

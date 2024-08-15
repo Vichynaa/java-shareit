@@ -13,5 +13,6 @@ public interface BookingInterface {
     public Booking getBookingById(Long bookingId, Long userId);
 
     public List<Booking> getBookingsByRequester(Long userId, Optional<String> status);
+
     public List<Booking> getBookingsByOwner(Long userId, Optional<String> status);
 }

@@ -25,8 +25,7 @@ public class ItemMapper {
         itemDto.setOwnerId(item.getOwner().getId());
         if (!item.getComments().isEmpty()) {
             itemDto.setComments(item.getComments().stream().map(CommentMapper::mapToCommentDto).toList());
-        }
-        else {
+        } else {
             itemDto.setComments(new ArrayList<>());
         }
         itemDto.setName(item.getName());

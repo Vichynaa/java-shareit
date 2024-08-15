@@ -74,8 +74,7 @@ public class BookingDbService implements BookingInterface {
         }
         if (isApproved.get()) {
             booking.setStatus(BookingStatus.APPROVED);
-        }
-        else {
+        } else {
             booking.setStatus(BookingStatus.REJECTED);
         }
         return bookingRepository.save(booking);
