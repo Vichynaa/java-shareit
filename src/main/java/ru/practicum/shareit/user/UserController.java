@@ -5,6 +5,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 import ru.practicum.shareit.user.dto.UserDto;
+import ru.practicum.shareit.user.dto.UserRequest;
+import ru.practicum.shareit.user.mappers.UserMapper;
 
 import java.util.List;
 
@@ -20,27 +22,27 @@ public class UserController {
     private final UserInterface userService;
 
     @PostMapping
-    public User create(@Valid @RequestBody UserDto userDto) {
-        log.info("POST /users - с даннами: name - {}; email - {}", userDto.getName(), userDto.getEmail());
-        return userService.create(userDto);
+    public UserDto create(@Valid @RequestBody UserRequest userRequest) {
+        log.info("POST /users - с даннами: name - {}; email - {}", userRequest.getName(), userRequest.getEmail());
+        return UserMapper.mapToUserDto(userService.create(userRequest));
     }
 
     @PatchMapping("/{userId}")
-    public User update(@Valid @RequestBody UserDto userDto,  @PathVariable Long userId) {
-        log.info("PATCH /users/{} - с даннами: name - {}; email - {}", userId, userDto.getName(), userDto.getEmail());
-        return userService.update(userDto, userId);
+    public UserDto update(@Valid @RequestBody UserRequest userRequest, @PathVariable Long userId) {
+        log.info("PATCH /users/{} - с даннами: name - {}; email - {}", userId, userRequest.getName(), userRequest.getEmail());
+        return UserMapper.mapToUserDto(userService.update(userRequest, userId));
     }
 
     @GetMapping
-    public List<User> findAll() {
+    public List<UserDto> findAll() {
         log.info("GET /users");
-        return userService.findAll();
+        return userService.findAll().stream().map(UserMapper::mapToUserDto).toList();
     }
 
     @GetMapping("/{userId}")
-    public User findUserById(@PathVariable Long userId) {
+    public UserDto findUserById(@PathVariable Long userId) {
         log.info("GET /users/{}", userId);
-        return userService.findUserById(userId);
+        return UserMapper.mapToUserDto(userService.findUserById(userId));
     }
 
     @DeleteMapping("/{userId}")
