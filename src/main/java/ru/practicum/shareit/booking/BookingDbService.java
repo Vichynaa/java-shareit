@@ -32,7 +32,7 @@ public class BookingDbService implements BookingInterface {
             log.error("Не указан id предмета");
             throw new ValidationException("Не указан id предмета");
         }
-        if (itemDbService.getItemById(bookingRequest.getItemId()).getOwner().getId() == userId) {
+        if (itemDbService.getItemById(bookingRequest.getItemId()).getOwner().getId().equals(userId)) {
             log.error("Пользователь не может запросить свой предмет");
             throw new ValidationException("Пользователь не может запросить свой предмет");
         }
